@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Registeration Page</title>
+  <link rel="stylesheet" href='/static/style.css'/>
+
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="bg">
+    <section>
+
+<form action="/register1" method="post">
+  <div class="form-field">
+  <input type="text" name="NAME" placeholder="NAME" required=""/>
+  </div>
+  <div class="form-field">
+  <input type="email" name="EMAIL" placeholder="EMAIL" required=""/>
+  </div>
+  <div class="form-field">
+    <input type="password" name="PASSWORD" placeholder="PASSWORD" required=""/>                         </div>
+  <p>Already an User <a href="/login">Login</a>
+  <div class="form-field">
+    <button class="btn" type="submit">Register</button>
+  </div>
+</form>
+
+{{pred}}
+  </section>
+  </main>
+</body>
+</html>

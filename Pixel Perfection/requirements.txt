@@ -1,0 +1,4 @@
+ibm_db
+Flask
+requests
+ibm-cos-sdk

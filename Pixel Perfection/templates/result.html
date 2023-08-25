@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href='/static/upload.css'/>
+</head>
+
+<body>
+<div class="center">
+  <div class="form-input">
+   <div class="preview">
+  <img id="image-preview">
+    </div>
+    <form action="/result1" method="post" enctype="multipart/form-data">
+        <input type="file" id="image" name="image" accept="image/*" onchange="LoadFile(event);">
+<label for="image">Upload Image</label>
+        <div class="preview">
+           <img id="image">
+         </div>
+        <button>submit</button>
+    </form>
+   
+    <script type="text/javascript">
+  function LoadFile(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("image-preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+        </script>
+        
+        </div>
+      </div> 
+</body>
+</html> 

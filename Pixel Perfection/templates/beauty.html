@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Skin Beauty Using RapidAPI</title>
+
+</head>
+<body>
+  <form  id="image" action="/beauty1" method="POST">
+    <input type="file" name="file" accept="image/*" onchange="LoadFile(event);">
+    <button type="button" action="beauty1">Beautify Image</button>
+  </form>
+  <br>
+  {% if processed_image_filename %}
+    <h2>Processed Image:</h2>
+    <img src="{{ processed_image_filename }}" alt="Processed Image">
+    {% endif %}
+  <script type="text/javascript">
+  function LoadFile(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("image");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+        </script>
+</body>
+</html>

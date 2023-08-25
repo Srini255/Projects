@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Background Removal HTML Page</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Background Removal HTML Page</h1>
+
+  <input action="/beauty1" type="file" id="image-upload" accept="image/*">
+  <br>
+  <img id="image-preview" src="" alt="Preview">
+  <br>
+  <button onclick="removeBackground()">Remove Background</button>
+
+  <script>
+    window.onload = function() {
+      var imagePreview = document.getElementById('image-preview');
+
+      document.getElementById('image-upload').addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          imagePreview.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+      });
+    };
+
+    function removeBackground() {
+      var apiKey = 'YOUR_REMOVE_BG_API_KEY';
+      var imageUrl = document.getElementById('image-preview').src;
+
+      if (!imageUrl || imageUrl === '') {
+        alert('Please upload an image first.');
+        return;
+      }
+
+      // Send request to Remove.bg API
+      $.ajax({
+        url: 'https://api.remove.bg/v1.0/removebg',
+        type: 'POST',
+        headers: {
+          'X-Api-Key': apiKey
+        },
+        data: {
+          image_url: imageUrl,
+          size: 'auto'
+        },
+        dataType: 'json',
+        success: function(result) {
+          // Display the image with the background removed
+          var removedBgImageUrl = result.data.result_url;
+          imagePreview.src = removedBgImageUrl;
+        },
+        error: function(xhr, status, error) {
+          console.log('Error:', error);
+          alert('An error occurred while removing the background.');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
